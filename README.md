@@ -30,7 +30,6 @@ A segurança da API é garantida por autenticação baseada em Bearer Token, ass
 - **MySQL**
 - **Maven/Gradle** (gerenciador de dependências)
 - **Lombok** (para redução de boilerplate)
-- **Swagger/OpenAPI** (para documentação da API) — se aplicável
 
 ---
 
