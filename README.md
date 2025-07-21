@@ -1,5 +1,7 @@
 # API Bigglieto
 
+- EM PRODUÇÃO
+
 API REST criada para servir como serviço de comunicação entre o front-end de um sistema web de controle de vouchers para hotéis. O objetivo principal é gerenciar vouchers baseando-se em critérios como tipo de reserva, tipo de pensão, status do voucher, entre outros parâmetros relacionados à operação hoteleira.
 
 ---
