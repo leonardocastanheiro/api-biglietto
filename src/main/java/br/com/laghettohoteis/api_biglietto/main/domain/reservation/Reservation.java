@@ -1,12 +1,15 @@
-package br.com.laghettohoteis.api_biglietto.models.reservation;
+package br.com.laghettohoteis.api_biglietto.main.domain.reservation;
 
-import br.com.laghettohoteis.api_biglietto.models.hotel.Hotel;
-import br.com.laghettohoteis.api_biglietto.models.log.Modification;
+import br.com.laghettohoteis.api_biglietto.main.domain.guest.Guest;
+import br.com.laghettohoteis.api_biglietto.main.domain.hotel.Hotel;
+import br.com.laghettohoteis.api_biglietto.main.domain.modification.Modification;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "reservation")
@@ -50,7 +53,14 @@ public class Reservation {
     @NotNull
     private Hotel hotel;
 
-    @OneToOne
-    @NotNull
-    private Modification lastModification;
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(
+            name = "reservation_guest",
+            joinColumns = @JoinColumn(name = "reservation_id"),
+            inverseJoinColumns = @JoinColumn(name = "guest_id")
+    )
+    private List<Guest> guests = new ArrayList<>();
+
+    @OneToMany(mappedBy = "reservation")
+    private List<Modification> modifications;
 }

@@ -1,14 +1,15 @@
-package br.com.laghettohoteis.api_biglietto.models.ticket;
+package br.com.laghettohoteis.api_biglietto.main.domain.ticket;
 
-import br.com.laghettohoteis.api_biglietto.models.guest.Guest;
-import br.com.laghettohoteis.api_biglietto.models.hotel.Hotel;
-import br.com.laghettohoteis.api_biglietto.models.log.Modification;
-import br.com.laghettohoteis.api_biglietto.models.reservation.Reservation;
+import br.com.laghettohoteis.api_biglietto.main.domain.guest.Guest;
+import br.com.laghettohoteis.api_biglietto.main.domain.hotel.Hotel;
+import br.com.laghettohoteis.api_biglietto.main.domain.modification.Modification;
+import br.com.laghettohoteis.api_biglietto.main.domain.reservation.Reservation;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "ticket")
@@ -44,7 +45,6 @@ public class Ticket {
     @ManyToOne
     private Hotel hotel;
 
-    @NotNull
-    @OneToOne
-    private Modification lastModification;
+    @OneToMany(mappedBy = "ticket")
+    private List<Modification> modifications;
 }

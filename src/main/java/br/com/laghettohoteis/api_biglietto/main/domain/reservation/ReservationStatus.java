@@ -1,12 +1,14 @@
-package br.com.laghettohoteis.api_biglietto.models.reservation;
+package br.com.laghettohoteis.api_biglietto.main.domain.reservation;
 
-import br.com.laghettohoteis.api_biglietto.models.log.Modification;
+import br.com.laghettohoteis.api_biglietto.main.domain.modification.Modification;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "reservationStatus")
+@Table(name = "reservation_status")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -21,7 +23,6 @@ public class ReservationStatus {
     @NotNull
     private String description;
 
-    @NotNull
-    @OneToOne
-    private Modification lastModification;
+    @OneToMany(mappedBy = "status")
+    private List<Modification> modifications;
 }
