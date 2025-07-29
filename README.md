@@ -30,7 +30,7 @@ A segurança da API é garantida por autenticação baseada em Bearer Token, ass
 - **Spring Security** (para autenticação via Bearer Token)
 - **Spring Data JPA**
 - **MySQL**
-- **Maven/Gradle** (gerenciador de dependências)
+- **Maven** (gerenciador de dependências)
 - **Lombok** (para redução de boilerplate)
 
 ---
